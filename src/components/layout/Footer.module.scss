@@ -1,0 +1,247 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.footer {
+  background: var(--color-surface-dark);
+  border-top: 1px solid var(--border-hairline);
+  position: relative;
+  z-index: var(--z-content);
+}
+
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+// Telemetry Bar
+.telemetryBar {
+  padding: 0.875rem 0;
+  border-bottom: 1px solid var(--border-hairline);
+  background: rgba(0, 0, 0, 0.4);
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+
+  .telemetryItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+
+    .telemetryIcon {
+      color: var(--accent-crimson-light);
+    }
+
+    .telemetryLabel {
+      color: var(--text-muted);
+    }
+
+    .telemetryValue {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .statusDot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      box-shadow: 0 0 6px var(--accent-emerald);
+    }
+  }
+}
+
+// Main Footer Grid
+.mainGrid {
+  padding: clamp(3rem, 6vw, 5.5rem) 0 clamp(2.5rem, 5vw, 4rem);
+
+  .container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.2fr;
+    gap: clamp(2rem, 4vw, 4rem);
+
+    @include laptop {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// Brand Column
+.brandCol {
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+
+    .brandIcon {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-xs);
+      background: rgba(225, 29, 72, 0.1);
+      border: 1px solid rgba(225, 29, 72, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-crimson-light);
+    }
+
+    .brandText {
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+
+      .brandName {
+        font-family: var(--font-display);
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: var(--text-primary);
+      }
+
+      .brandSuffix {
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        color: var(--accent-crimson-light);
+        padding: 0.1rem 0.35rem;
+        border: 1px solid rgba(225, 29, 72, 0.3);
+        border-radius: var(--radius-xs);
+        background: rgba(225, 29, 72, 0.08);
+      }
+    }
+  }
+
+  .brandMission {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.7;
+    max-width: 380px;
+    margin-bottom: 1.5rem;
+  }
+
+  .brandMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+  }
+}
+
+// Navigation Columns
+.navCol {
+  .colTitle {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-hairline);
+  }
+
+  .linkList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    li a {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      transition: color var(--transition-fast);
+
+      &:hover {
+        color: var(--accent-crimson-light);
+      }
+    }
+
+    .productLink {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      .productBadge {
+        font-family: var(--font-mono);
+        font-size: 0.5625rem;
+        letter-spacing: 0.08em;
+        padding: 0.1rem 0.35rem;
+        border-radius: var(--radius-xs);
+        background: rgba(225, 29, 72, 0.15);
+        border: 1px solid rgba(225, 29, 72, 0.4);
+        color: var(--accent-crimson-light);
+      }
+    }
+  }
+}
+
+// Disclosures
+.disclosures {
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--border-hairline);
+  background: rgba(0, 0, 0, 0.2);
+
+  .disclaimerText {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+
+    strong {
+      color: var(--text-secondary);
+    }
+  }
+}
+
+// Bottom Bar
+.bottomBar {
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--border-hairline);
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .copyright {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+  }
+
+  .scrollTopButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    transition: color var(--transition-fast);
+
+    &:hover {
+      color: var(--accent-crimson-light);
+    }
+  }
+}

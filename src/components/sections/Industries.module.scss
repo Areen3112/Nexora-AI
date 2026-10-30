@@ -1,0 +1,360 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  position: relative;
+  padding: clamp(5rem, 9vw, 9rem) 0;
+  border-bottom: 1px solid var(--border-hairline);
+  background: var(--color-surface-dark);
+}
+
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.sectionHeader {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-crimson-light);
+    margin-bottom: 1rem;
+
+    .eyebrowDot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-crimson);
+      box-shadow: 0 0 10px var(--accent-crimson);
+      display: inline-block;
+    }
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 1.25rem;
+
+    em {
+      font-style: italic;
+      color: var(--accent-crimson-light);
+    }
+  }
+
+  .description {
+    font-family: var(--font-sans);
+    font-size: clamp(1rem, 1.25vw, 1.1875rem);
+    line-height: 1.65;
+    color: var(--text-secondary);
+    max-width: 680px;
+  }
+}
+
+// Industry Switcher
+.industryNav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  margin-bottom: 2.5rem;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .industryBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-xs);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-hairline);
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+
+    .btnIcon {
+      color: var(--text-muted);
+      transition: color var(--transition-fast);
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: var(--text-primary);
+    }
+
+    &.active {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--ind-accent, var(--accent-crimson));
+      color: #FFFFFF;
+      box-shadow: 0 0 20px rgba(225, 29, 72, 0.1);
+
+      .btnIcon {
+        color: var(--ind-accent, var(--accent-crimson-light));
+      }
+    }
+  }
+}
+
+// Industry Stage
+.industryStage {
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-sm);
+  padding: clamp(1.75rem, 3.5vw, 3rem);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--ind-accent, var(--accent-crimson));
+  }
+}
+
+.stageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2.25rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border-hairline);
+  flex-wrap: wrap;
+
+  .headerTitleGroup {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+
+    .iconFrame {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-xs);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-hairline);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ind-accent, var(--accent-crimson-light));
+    }
+
+    .indCode {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      letter-spacing: 0.14em;
+      color: var(--ind-accent, var(--accent-crimson-light));
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .indTitle {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .indTagline {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+    }
+  }
+
+  .capabilitiesTags {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .capLabel {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    .capsList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+  }
+}
+
+// Challenge vs Solution
+.stageChallengeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
+
+  .challengeBox {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-xs);
+    padding: 1.5rem;
+
+    .boxTag {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      letter-spacing: 0.12em;
+      color: #F87171;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      font-size: 0.875rem;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+  }
+
+  .solutionBox {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-hairline);
+    border-radius: var(--radius-xs);
+    padding: 1.5rem;
+
+    .boxTagSolution {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      letter-spacing: 0.12em;
+      color: var(--ind-accent, var(--accent-emerald));
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      font-size: 0.875rem;
+      line-height: 1.65;
+      color: var(--text-primary);
+    }
+  }
+}
+
+// Practical Workflow Architecture
+.workflowContainer {
+  margin-bottom: 2rem;
+
+  .workflowHeading {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin-bottom: 1.5rem;
+
+    .workflowIcon {
+      color: var(--ind-accent, var(--accent-crimson-light));
+    }
+
+    h4 {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      color: var(--text-secondary);
+    }
+  }
+
+  .stepGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+
+    @include laptop {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+
+    .stepCard {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-xs);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .stepHeader {
+        .stepIndex {
+          font-family: var(--font-mono);
+          font-size: 0.625rem;
+          letter-spacing: 0.14em;
+          color: var(--ind-accent, var(--accent-crimson-light));
+          font-weight: 600;
+        }
+      }
+
+      .stepTitle {
+        font-family: var(--font-sans);
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .stepDesc {
+        font-size: 0.75rem;
+        line-height: 1.55;
+        color: var(--text-muted);
+      }
+    }
+  }
+}
+
+// Governance Notice
+.governanceNotice {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.25rem;
+  border-radius: var(--radius-xs);
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-hairline);
+
+  .alertIcon {
+    color: var(--ind-accent, var(--accent-amber));
+    flex-shrink: 0;
+  }
+
+  p {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+
+    strong {
+      color: var(--text-secondary);
+    }
+  }
+}

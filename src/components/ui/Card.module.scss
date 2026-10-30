@@ -1,0 +1,77 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.card {
+  --card-accent: var(--accent-crimson);
+  position: relative;
+  background: var(--color-surface-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-medium);
+  overflow: hidden;
+
+  &.hoverElevation:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(225, 29, 72, 0.08);
+    transform: translateY(-2px);
+  }
+
+  &.withGlow:hover {
+    box-shadow: 0 0 40px var(--card-accent);
+  }
+
+  .inner {
+    position: relative;
+    z-index: 2;
+    padding: clamp(1.25rem, 2.5vw, 2.25rem);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Corner brackets
+  .cornerTl, .cornerTr, .cornerBl, .cornerBr {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    pointer-events: none;
+    z-index: 3;
+    transition: border-color var(--transition-fast);
+  }
+
+  .cornerTl {
+    top: 0;
+    left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .cornerTr {
+    top: 0;
+    right: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .cornerBl {
+    bottom: 0;
+    left: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .cornerBr {
+    bottom: 0;
+    right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  &:hover {
+    .cornerTl, .cornerTr, .cornerBl, .cornerBr {
+      border-color: var(--card-accent);
+    }
+  }
+}

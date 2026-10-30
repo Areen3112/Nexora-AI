@@ -1,0 +1,418 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  position: relative;
+  padding: clamp(5rem, 9vw, 9rem) 0;
+  border-bottom: 1px solid var(--border-hairline);
+  background: var(--color-surface-dark);
+}
+
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.sectionHeader {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-crimson-light);
+    margin-bottom: 1rem;
+
+    .eyebrowDot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-crimson);
+      box-shadow: 0 0 10px var(--accent-crimson);
+      display: inline-block;
+    }
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 1.25rem;
+
+    em {
+      font-style: italic;
+      color: var(--accent-crimson-light);
+    }
+  }
+
+  .description {
+    font-family: var(--font-sans);
+    font-size: clamp(1rem, 1.25vw, 1.1875rem);
+    line-height: 1.65;
+    color: var(--text-secondary);
+    max-width: 680px;
+  }
+}
+
+.inquiryGrid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: clamp(1.5rem, 3vw, 3rem);
+
+  @include laptop {
+    grid-template-columns: 1fr;
+  }
+}
+
+.formCol {
+  width: 100%;
+}
+
+.formCard {
+  background: var(--color-surface-elevated);
+}
+
+.inquiryForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputLabel {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+// Pill Grid
+.pillGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  .pillBtn {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    padding: 0.4rem 0.85rem;
+    border-radius: var(--radius-xs);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-hairline);
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: var(--text-primary);
+    }
+
+    &.pillActive {
+      background: rgba(225, 29, 72, 0.15);
+      border-color: var(--accent-crimson);
+      color: var(--accent-crimson-light);
+      font-weight: 600;
+    }
+  }
+}
+
+// Input Rows
+.inputRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fieldBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.textInput, .selectInput, .textArea {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-xs);
+  padding: 0.75rem 1rem;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  transition: all var(--transition-fast);
+
+  &:focus {
+    border-color: var(--accent-crimson);
+    background: rgba(0, 0, 0, 0.6);
+    outline: none;
+    box-shadow: 0 0 15px rgba(225, 29, 72, 0.15);
+  }
+
+  &.hasError {
+    border-color: #F87171;
+  }
+}
+
+.selectInput {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+
+  option {
+    background: var(--color-surface-elevated);
+    color: var(--text-primary);
+  }
+}
+
+.textArea {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.6;
+}
+
+.errMessage {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: #F87171;
+}
+
+.formFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-hairline);
+  flex-wrap: wrap;
+
+  .privacyGuarantee {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+
+    .privacyIcon {
+      color: var(--accent-emerald);
+    }
+  }
+}
+
+// Success State
+.successState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1rem;
+
+  .successIconBox {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: var(--accent-emerald);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .successTitle {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .successDesc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    max-width: 480px;
+    margin-bottom: 2rem;
+  }
+}
+
+.briefPreviewBox {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  text-align: left;
+
+  .briefBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid var(--border-hairline);
+
+    .briefTag {
+      font-family: var(--font-mono);
+      font-size: 0.5625rem;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    .copyBtn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      color: var(--accent-crimson-light);
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-xs);
+      background: rgba(225, 29, 72, 0.1);
+      border: 1px solid rgba(225, 29, 72, 0.3);
+
+      &:hover {
+        background: rgba(225, 29, 72, 0.2);
+      }
+    }
+  }
+
+  .briefCode {
+    padding: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    white-space: pre-wrap;
+  }
+}
+
+.configNotice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.875rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  text-align: left;
+  margin-bottom: 1.5rem;
+
+  .configIcon {
+    color: var(--accent-cyan-light);
+    margin-top: 0.15rem;
+    flex-shrink: 0;
+  }
+
+  strong {
+    color: var(--text-secondary);
+  }
+}
+
+.resetBtn {
+  align-self: center;
+}
+
+// Sidebar Column
+.sidebarCol {
+  .sidebarPanel {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-hairline);
+    border-radius: var(--radius-xs);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .sidebarTitle {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-hairline);
+  }
+
+  .consultSteps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+
+      .stepNum {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--accent-crimson);
+        padding-top: 0.1rem;
+      }
+
+      h5 {
+        font-family: var(--font-display);
+        font-size: 0.9375rem;
+        color: var(--text-primary);
+        margin-bottom: 0.25rem;
+      }
+
+      p {
+        font-size: 0.75rem;
+        line-height: 1.55;
+        color: var(--text-muted);
+      }
+    }
+  }
+
+  .sidebarBox {
+    background: rgba(225, 29, 72, 0.05);
+    border: 1px solid rgba(225, 29, 72, 0.2);
+    border-radius: var(--radius-xs);
+    padding: 1rem;
+
+    .boxTag {
+      font-family: var(--font-mono);
+      font-size: 0.5625rem;
+      letter-spacing: 0.12em;
+      color: var(--accent-crimson-light);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    p {
+      font-size: 0.75rem;
+      line-height: 1.55;
+      color: var(--text-secondary);
+    }
+  }
+}

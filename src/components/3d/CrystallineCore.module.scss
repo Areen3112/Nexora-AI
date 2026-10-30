@@ -1,0 +1,133 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: clamp(380px, 50vh, 580px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+
+  canvas {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    outline: none;
+    z-index: 2;
+  }
+}
+
+// Fallback CSS Graphic
+.fallbackGraphic {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+  .fallbackPolyhedron {
+    width: 180px;
+    height: 180px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotateFallback 12s infinite linear;
+
+    .fallbackFacet {
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--accent-crimson);
+      background: radial-gradient(circle at center, rgba(225, 29, 72, 0.2), transparent 70%);
+      transform: rotate(45deg);
+
+      &:nth-child(2) {
+        transform: rotate(30deg) scale(0.85);
+        border-color: rgba(255, 255, 255, 0.4);
+      }
+
+      &:nth-child(3) {
+        transform: rotate(60deg) scale(1.15);
+        border-color: var(--accent-cyan);
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .fallbackTag {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+  }
+}
+
+@keyframes rotateFallback {
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+// Telemetry Brackets
+.telemetryBracketTopLeft {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  padding: 0.5rem 0.75rem;
+  background: rgba(6, 6, 8, 0.6);
+  border: 1px solid var(--border-hairline);
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+
+  .bracketCode {
+    color: var(--accent-crimson-light);
+    font-weight: 600;
+  }
+
+  .bracketCoord {
+    color: var(--text-muted);
+  }
+}
+
+.telemetryBracketBottomRight {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.5rem 0.875rem;
+  background: rgba(6, 6, 8, 0.6);
+  border: 1px solid var(--border-hairline);
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+
+  .metricItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+
+    .metricLabel {
+      font-family: var(--font-mono);
+      font-size: 0.5625rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+
+    .metricValue {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+  }
+}

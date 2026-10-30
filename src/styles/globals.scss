@@ -1,0 +1,217 @@
+// Nexora AI — Global Stylesheet
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'grid' as *;
+
+// Google Fonts import for editorial serif and geometric sans
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  // Color Palette — Core
+  --color-obsidian: #060608;
+  --color-surface-dark: #0D0D12;
+  --color-surface-elevated: #15151E;
+  --color-surface-glass: rgba(18, 18, 26, 0.65);
+  --color-surface-glass-strong: rgba(15, 15, 22, 0.88);
+  
+  // Borders & Dividers
+  --border-hairline: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --border-prominent: rgba(255, 255, 255, 0.2);
+  --border-glow-crimson: rgba(225, 29, 72, 0.35);
+  --border-glow-cyan: rgba(14, 165, 233, 0.35);
+  
+  // Typography Colors
+  --text-primary: #F7F7F8;
+  --text-secondary: #9CA3AF;
+  --text-muted: #646470;
+  --text-dim: #3F3F46;
+  
+  // Accent Spectrum
+  --accent-crimson: #E11D48;
+  --accent-crimson-light: #FF355E;
+  --accent-crimson-glow: rgba(225, 29, 72, 0.25);
+  --accent-cyan: #0EA5E9;
+  --accent-cyan-light: #38BDF8;
+  --accent-cyan-glow: rgba(14, 165, 233, 0.25);
+  --accent-emerald: #10B981;
+  --accent-emerald-glow: rgba(16, 185, 129, 0.25);
+  --accent-amber: #F59E0B;
+  --accent-amber-glow: rgba(245, 158, 11, 0.25);
+  --accent-amethyst: #A855F7;
+  
+  // Typography Fonts
+  --font-display: 'Cinzel', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, Menlo, monospace;
+  
+  // Spacing Scale
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+  --space-40: 10rem;
+  
+  // Layout Containers
+  --container-max-width: 1440px;
+  --container-narrow-width: 1080px;
+  --container-padding: clamp(1.25rem, 4vw, 3.5rem);
+  
+  // Radii
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-pill: 9999px;
+  
+  // Elevation / Shadows
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-elevated: 0 12px 40px rgba(0, 0, 0, 0.6);
+  --shadow-caustic-crimson: 0 0 50px rgba(225, 29, 72, 0.18);
+  --shadow-caustic-cyan: 0 0 50px rgba(14, 165, 233, 0.18);
+  
+  // Transitions
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-medium: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  // Z-Index Layers
+  --z-canvas: 1;
+  --z-grid-backdrop: 2;
+  --z-content: 10;
+  --z-header: 100;
+  --z-modal: 200;
+  --z-cursor: 500;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--color-obsidian);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: auto; // Managed by Lenis
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--color-obsidian);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.5;
+}
+
+// Lenis Smooth Scroll
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+// Custom Scrollbar
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-obsidian);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-pill);
+
+  &:hover {
+    background: var(--accent-crimson);
+  }
+}
+
+// Accessibility Focus Styles
+:focus-visible {
+  outline: 2px solid var(--accent-crimson-light);
+  outline-offset: 3px;
+}
+
+// Global Link and Button Resets
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+button {
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  color: inherit;
+}
+
+// Selection Styling
+::selection {
+  background: var(--accent-crimson);
+  color: #FFFFFF;
+}
+
+// Skip Link for Accessibility
+.skip-to-content {
+  position: absolute;
+  top: -100px;
+  left: 1.5rem;
+  z-index: var(--z-modal);
+  background: var(--accent-crimson);
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  transition: top 0.2s ease;
+
+  &:focus {
+    top: 1.5rem;
+  }
+}
+
+// Reduced Motion Preference
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

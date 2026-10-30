@@ -1,0 +1,40 @@
+// Nexora AI — SCSS Design Tokens & Variables
+// Reference Architecture: Cartier Haute Horlogerie & Joaillerie
+
+// Color Palette — Core
+$obsidian: #060608;
+$surface-dark: #0D0D12;
+$surface-elevated: #15151E;
+$surface-glass: rgba(18, 18, 26, 0.65);
+$surface-glass-strong: rgba(15, 15, 22, 0.88);
+
+// Borders & Dividers
+$border-hairline: rgba(255, 255, 255, 0.08);
+$border-subtle: rgba(255, 255, 255, 0.12);
+$border-prominent: rgba(255, 255, 255, 0.2);
+
+// Typography Colors
+$text-primary: #F7F7F8;
+$text-secondary: #9CA3AF;
+$text-muted: #646470;
+$text-dim: #3F3F46;
+
+// Accent Spectrum
+$crimson: #E11D48;
+$crimson-light: #FF355E;
+$crimson-glow: rgba(225, 29, 72, 0.25);
+$cyan: #0EA5E9;
+$cyan-light: #38BDF8;
+$cyan-glow: rgba(14, 165, 233, 0.25);
+$emerald: #10B981;
+$emerald-glow: rgba(16, 185, 129, 0.25);
+$amber: #F59E0B;
+$amber-glow: rgba(245, 158, 11, 0.25);
+$amethyst: #A855F7;
+
+// Breakpoints
+$bp-mobile: 480px;
+$bp-tablet: 768px;
+$bp-laptop: 1024px;
+$bp-desktop: 1280px;
+$bp-wide: 1536px;

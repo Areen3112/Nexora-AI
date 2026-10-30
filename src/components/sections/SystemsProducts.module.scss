@@ -1,0 +1,434 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  position: relative;
+  padding: clamp(5rem, 9vw, 9rem) 0;
+  border-bottom: 1px solid var(--border-hairline);
+  background: var(--color-surface-dark);
+}
+
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.sectionHeader {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-crimson-light);
+    margin-bottom: 1rem;
+
+    .eyebrowDot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-crimson);
+      box-shadow: 0 0 10px var(--accent-crimson);
+      display: inline-block;
+    }
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 1.25rem;
+
+    em {
+      font-style: italic;
+      color: var(--accent-crimson-light);
+    }
+  }
+
+  .description {
+    font-family: var(--font-sans);
+    font-size: clamp(1rem, 1.25vw, 1.1875rem);
+    line-height: 1.65;
+    color: var(--text-secondary);
+    max-width: 680px;
+  }
+}
+
+// LeadFlow Flagship Showcase Banner
+.leadflowHeroBanner {
+  position: relative;
+  background: var(--color-surface-elevated);
+  border: 1px solid rgba(225, 29, 72, 0.35);
+  border-radius: var(--radius-sm);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(225, 29, 72, 0.08);
+  margin-bottom: clamp(3.5rem, 6vw, 6rem);
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent-crimson);
+  }
+}
+
+.leadflowGlow {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.15) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.leadflowLayout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+
+  @include laptop {
+    grid-template-columns: 1fr;
+  }
+}
+
+.leadflowMeta {
+  display: flex;
+  flex-direction: column;
+}
+
+.leadflowBadges {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.leadflowTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.leadflowTagline {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  color: var(--accent-crimson-light);
+  margin-bottom: 1.25rem;
+}
+
+.leadflowDesc {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  max-width: 540px;
+}
+
+.leadflowActions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.leadflowTechStack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-hairline);
+
+  .stackLabel {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+  }
+
+  .stackTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    .techTag {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-xs);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-hairline);
+      color: var(--text-secondary);
+    }
+  }
+}
+
+// Cockpit Terminal
+.leadflowCockpitCol {
+  width: 100%;
+}
+
+.cockpitTerminal {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  font-family: var(--font-mono);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+
+  .terminalBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.625rem 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid var(--border-hairline);
+
+    .terminalDots {
+      display: flex;
+      gap: 6px;
+
+      span {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+
+        &:first-child {
+          background: #F87171;
+        }
+        &:nth-child(2) {
+          background: #FBBF24;
+        }
+        &:nth-child(3) {
+          background: #34D399;
+        }
+      }
+    }
+
+    .terminalTitle {
+      font-size: 0.625rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+  }
+
+  .terminalContent {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .terminalLine {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+
+      .prompt {
+        color: var(--accent-crimson-light);
+      }
+
+      .cmd {
+        color: var(--text-primary);
+      }
+    }
+
+    .terminalOutput {
+      font-size: 0.6875rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      padding: 0.75rem;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: var(--radius-xs);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .terminalFeatures {
+      margin-top: 0.5rem;
+
+      .featureLabel {
+        font-size: 0.625rem;
+        letter-spacing: 0.12em;
+        color: var(--accent-crimson-light);
+        display: block;
+        margin-bottom: 0.75rem;
+      }
+
+      .featureList {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.625rem;
+
+        li {
+          display: flex;
+          align-items: center;
+          gap: 0.625rem;
+          font-size: 0.75rem;
+          color: var(--text-secondary);
+
+          .featIcon {
+            color: var(--accent-emerald);
+            flex-shrink: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Archetypes Header & Grid
+.archetypesHeader {
+  margin-bottom: 2.25rem;
+
+  .archetypeSectionTitle {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .archetypeSectionSubtitle {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+  }
+}
+
+.archetypesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+  @include laptop {
+    grid-template-columns: 1fr;
+  }
+
+  .archetypeCard {
+    background: var(--color-surface-elevated);
+    height: 100%;
+  }
+
+  .archHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    .archStatus {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .archName {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--text-primary);
+    }
+
+    .archIconBox {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-xs);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-hairline);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .archTagline {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--accent-cyan-light);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .archDesc {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .archFeatures {
+    margin-bottom: 1.5rem;
+
+    .archFeatTitle {
+      font-family: var(--font-mono);
+      font-size: 0.5625rem;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .archList {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        line-height: 1.5;
+        color: var(--text-secondary);
+
+        .bullet {
+          font-size: 0.75rem;
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+
+  .archFoot {
+    margin-top: auto;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-hairline);
+
+    .archStack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+
+      .archTechPill {
+        font-family: var(--font-mono);
+        font-size: 0.625rem;
+        padding: 0.15rem 0.45rem;
+        border-radius: var(--radius-xs);
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-hairline);
+        color: var(--text-muted);
+      }
+    }
+  }
+}

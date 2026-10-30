@@ -1,0 +1,132 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  position: relative;
+  padding: clamp(5rem, 9vw, 9rem) 0;
+  border-bottom: 1px solid var(--border-hairline);
+  background: var(--color-obsidian);
+}
+
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.sectionHeader {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-crimson-light);
+    margin-bottom: 1rem;
+
+    .eyebrowDot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-crimson);
+      box-shadow: 0 0 10px var(--accent-crimson);
+      display: inline-block;
+    }
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 1.25rem;
+
+    em {
+      font-style: italic;
+      color: var(--accent-crimson-light);
+    }
+  }
+
+  .description {
+    font-family: var(--font-sans);
+    font-size: clamp(1rem, 1.25vw, 1.1875rem);
+    line-height: 1.65;
+    color: var(--text-secondary);
+    max-width: 680px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+  @include laptop {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.principleCard {
+  background: var(--color-surface-elevated);
+  height: 100%;
+
+  .cardTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-hairline);
+
+    .principleNumber {
+      font-family: var(--font-mono);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent-crimson);
+    }
+
+    .metricTag {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-cyan-light);
+      padding: 0.2rem 0.5rem;
+      background: rgba(14, 165, 233, 0.08);
+      border: 1px solid rgba(14, 165, 233, 0.25);
+      border-radius: var(--radius-xs);
+    }
+  }
+
+  .principleTitle {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .principleShort {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent-crimson-light);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+
+  .principleFull {
+    font-size: 0.8125rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+}
